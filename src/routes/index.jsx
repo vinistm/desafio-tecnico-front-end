@@ -1,15 +1,13 @@
-import Antecipacao from "../Antecipacao";
-import { Route, Switch } from "react-router";
+import Home from "../pages/Home";
+import { Route,Routes} from "react-router-dom";
 
-function Routes() {
+function AppRoutes() {
 
   return (
-    <Switch>
-      <Route exact path="/">
-        <Antecipacao/>
-      </Route>
-    </Switch>
+    <Routes>
+      <Route path="/" element={<Home/>}/>
+    </Routes>
   );
 }
 
-export default Routes;
+export default AppRoutes;
