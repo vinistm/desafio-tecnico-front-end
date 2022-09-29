@@ -1,18 +1,18 @@
 import Home from "../pages/Home";
 import Delay from "../pages/Delay";
-import { Route,Switch} from "react-router-dom";
+import Error from "../pages/Error"
+import Tiemout from "../pages/Timeout"
+import { Route, Routes } from "react-router-dom";
 
 function AppRoutes() {
 
   return (
-    <Switch>
-      <Route exact path="/">
-        <Home/>
-      </Route>
-      <Route exact path="/delay">
-        <Delay/>
-      </Route>
-    </Switch>
+  <Routes>
+    <Route path="/" element={<Home />} />
+    <Route path="/delay" element={<Delay />} />
+    <Route path="/error" element={<Error />} />
+    <Route path="/timeout" element={<Tiemout />} />
+  </Routes>
  
   );
  

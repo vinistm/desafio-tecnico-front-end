@@ -1,12 +1,12 @@
 import { useForm} from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Container,Antecipacao } from "../../pages/Home/style";
-import { ReactNode } from "react";
+import { Container,Antecipacao } from "./style";
 
-const Form = () =>{
 
- const formSchema = yup.object().shape({
+const Form = ({submitValue}) =>{
+
+    const formSchema = yup.object().shape({
     amount: yup
       .string()
       .required("Valor obrigatório!"),
@@ -19,14 +19,14 @@ const Form = () =>{
       .required("Conteúdo obrigatório")
 
   });
-const {register,formState:{errors}} = useForm({resolver:yupResolver(formSchema)});
+const {register,handleSubmit,formState:{errors}} = useForm({resolver:yupResolver(formSchema)});
 
     return(
         <div>
             <Container>
                 <Antecipacao>
                     <h2>Simule sua Antecipação</h2>
-                    <form {...ReactNode}>
+                    <form onChange={handleSubmit(submitValue)}>
                         <label>
                             <p>Informe o valor da venda*</p>
                             <input type="text" name="amount" placeholder="ex: 12000"{...register("amount")}/>

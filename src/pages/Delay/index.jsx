@@ -3,7 +3,7 @@ import { ValuesContext } from "../../Providers/forms";
 import { Link } from "react-router-dom";
 import Form from "../../components/form";
 import Answer from "../../components/answer";
-
+import { AdjustHome,Links } from "./style";
 
 
 
@@ -14,9 +14,17 @@ const Delay = () =>{
 
     return(
        <>
-        <Form {...testDelay}/>
+       <AdjustHome>
+
+        <Form submitValue={testDelay}/>
         <Answer/>
-         <Link to="/">Home</Link>
+       </AdjustHome>
+       <Links>
+            <Link to="/">Home</Link>
+            <Link to="/error">Error</Link>
+            <Link to="/timeout">Timeout</Link>
+
+      </Links>
        </>
        
     )

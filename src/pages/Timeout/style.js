@@ -1,5 +1,4 @@
 import styled from "styled-components";
-
 export const AdjustHome = styled.div`
     display:flex;
     align-items: center;
@@ -12,7 +11,6 @@ export const AdjustHome = styled.div`
     box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.75);
 
 `
-
 export const Links = styled.div`
     display:flex;
     align-items: center;
@@ -24,9 +22,6 @@ export const Links = styled.div`
     border: 1px solid #D1DCE3;
     border-radius: 4px;
     box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.75);
-   
-               
-       
     a{  
         display:flex;
         justify-content: center;
@@ -40,6 +35,8 @@ export const Links = styled.div`
 
     }
     a:hover{
+        background-color:#d8e7fa;
+        a:hover{
         background-color:#d8e7fa;
         animation: focus-in-contract 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
         
@@ -56,6 +53,7 @@ export const Links = styled.div`
                     filter: blur(0px);
             opacity: 1;
         }
+    }
     }
 
 `

@@ -1,6 +1,7 @@
 
 import { useState,createContext } from "react";
-import {api,apiDelay} from "../../services/api"
+import {api} from "../../services/api"
+import { toast } from "react-toastify";
 
 export const ValuesContext = createContext({});
 
@@ -11,49 +12,97 @@ export const ValuesProvider = ({children}) =>{
         api
             .post("",data)
             .then((response)=>{
-                console.log(response.data);
                 setValues(response.data);
+                toast.success('Calculo efetuado !', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    });
             })
-            .catch((err)=>{
-                console.log(err)
-            })
-    };
-    // const testTimeout = (data) => {
-    //     api
-    //         .post("?internalError",data)
-    //         .then((response)=>{
-    //             console.log(response.data);
-    //             setTimeout(response.data);
-    //         })
-    //         .catch((err)=>{
-    //             console.log(err)
-    //         })
-    // };
-    // const testErrorAfk = (data) => {
-    //     api
-    //         .post("?timeout",data)
-    //         .then((response)=>{
-    //             console.log(response.data);
-    //             setErrorAfk(response.data);
-    //         })
-    //         .catch((err)=>{
-    //             console.log(err)
-    //         })
-    // };
+            .catch((err) => {
+                toast.error("Ocorreu um erro na requisição!", {
+                  position: "top-right",
+                  autoClose: 5000,
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  pauseOnHover: true,
+                  draggable: true,
+                  progress: undefined,
+                });
+              });
+            };
     const testDelay = (data) => {
-        apiDelay
-            .post("",data)
+        api
+            .post("?delay=5000",data)
             .then((response)=>{
-                console.log(response.data);
                 setValues(response.data);
+                toast.success('Calculo efetuado !', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    });
             })
-            .catch((err)=>{
-                console.log(err)
-            })
+            .catch((err) => {
+                toast.error("Ocorreu um erro na requisição!", {
+                  position: "top-right",
+                  autoClose: 5000,
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  pauseOnHover: true,
+                  draggable: true,
+                  progress: undefined,
+                });
+              });
     };
+    const postError = (data) => {
+        api
+          .post("?internalError", data)
+          .then((response) => {
+            setValues(response.data);
+          })
+          .catch((err) => {
+            toast.error("Erro na requisição!", {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
+          });
+    }
+          
+    const postTimeout = (data) => {
+        api
+            .post("?timeout", data)
+            .then((response) => {
+            setValues(response.data);
+            })
+            .catch((err) => {
+            toast.error("Verifique a sua conexão com a internet", {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+            });
+        };
 
     return(
-        <ValuesContext.Provider value={{values,postValue,testDelay}}>
+        <ValuesContext.Provider 
+        value={{values,postValue,testDelay,postError,postTimeout}}>
             {children}
         </ValuesContext.Provider>
     )
