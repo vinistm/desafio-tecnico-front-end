@@ -6,11 +6,11 @@ import {ValuesProvider }from "./Providers/forms"
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
+  <React.StrictMode>
     <BrowserRouter>
-      <React.StrictMode>
-        <ValuesProvider>
-          <App />
-        </ValuesProvider>
-      </React.StrictMode>
+      <ValuesProvider>
+        <App />
+      </ValuesProvider>
     </BrowserRouter>
+  </React.StrictMode>
 );

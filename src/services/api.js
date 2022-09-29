@@ -3,6 +3,6 @@ const api = axios.create({
   baseURL: "https://frontend-challenge-7bu3nxh76a-uc.a.run.app",
 });
 const apiDelay = axios.create({
-  baseURL:"https://frontend-challenge-7bu3nxh76a-uc.a.run.app?delay=3000"
+  baseURL:"https://frontend-challenge-7bu3nxh76a-uc.a.run.app?delay=5000"
 });
 export { api,apiDelay };

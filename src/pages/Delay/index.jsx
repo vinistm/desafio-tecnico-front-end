@@ -3,24 +3,24 @@ import { ValuesContext } from "../../Providers/forms";
 import { Link } from "react-router-dom";
 import Form from "../../components/form";
 import Answer from "../../components/answer";
-import { useForm } from "react-hook-form";
 
 
-const Home = () =>{
+
+
+
+const Delay = () =>{
   
-    const {postValue} = useContext(ValuesContext);
-    const {handleSubmit} = useForm();
+    const {testDelay} = useContext(ValuesContext);
 
     return(
        <>
-        <Form onChange={handleSubmit(postValue)}/>
+        <Form {...testDelay}/>
         <Answer/>
-         <Link to="/delay">Delay</Link>
-
+         <Link to="/">Home</Link>
        </>
        
     )
 
 
 }
-export default Home;
+export default Delay;

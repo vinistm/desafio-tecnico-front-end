@@ -1,12 +1,19 @@
 import Home from "../pages/Home";
-import { Route,Routes} from "react-router-dom";
+import Delay from "../pages/Delay";
+import { Route,Switch} from "react-router-dom";
 
 function AppRoutes() {
 
   return (
-    <Routes>
-      <Route path="/" element={<Home/>}/>
-    </Routes>
+    <Switch>
+      <Route exact path="/">
+        <Home/>
+      </Route>
+      <Route exact path="/delay">
+        <Delay/>
+      </Route>
+    </Switch>
+ 
   );
  
 }
